@@ -1,0 +1,91 @@
+/* Mobile responsiveness layer for Ann Mutheu portfolio.
+   The bundled page carries its layout in inline style="" attributes and ships
+   zero media queries. Inline styles beat stylesheets, so every rule needs
+   !important, and elements are targeted by their inline-style text because the
+   markup has no class names.
+
+   IMPORTANT: the framework re-serializes styles at runtime with a space after
+   the colon ("padding: 96px 40px"), which does NOT match the minified spelling
+   in the source file. Selectors below must match the runtime form. Both
+   spellings are listed where a value is matched exactly. */
+
+/* ---------- Grids: collapse to one column ---------- */
+@media (max-width: 900px) {
+  /* Value-agnostic, so it survives either spelling. */
+  [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+
+  /* Exceptions, declared after the blanket rule so they win on source order.
+     "auto 1fr" is an icon+text row that should stay side by side at any width. */
+  [style*="grid-template-columns: auto 1fr"],
+  [style*="grid-template-columns:auto 1fr"] { grid-template-columns: auto 1fr !important; }
+
+  /* Short-label grids stay 2-up rather than becoming a long thin list. */
+  [style*="repeat(4, 1fr)"], [style*="repeat(4,1fr)"],
+  [style*="repeat(3, 1fr)"], [style*="repeat(3,1fr)"] { grid-template-columns: 1fr 1fr !important; }
+}
+
+/* On a phone even 2-up is too cramped: these cards carry a heading plus a
+   paragraph, and at 2-up they were 185px wide with 32px padding, leaving 119px
+   of text. Go full width and trim the card padding to match. */
+@media (max-width: 640px) {
+  [style*="repeat(4, 1fr)"], [style*="repeat(4,1fr)"],
+  [style*="repeat(3, 1fr)"], [style*="repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
+
+  [style*="padding: 32px"], [style*="padding:32px"] { padding: 22px !important; }
+  [style*="padding: 26px"], [style*="padding:26px"] { padding: 20px !important; }
+}
+
+/* ---------- Page gutters ----------
+   40px each side eats 21% of a 375px screen. Matching on "px 40px" catches
+   every gutter declaration without enumerating them; only the horizontal
+   values are replaced so vertical rhythm is preserved. */
+@media (max-width: 640px) {
+  [style*="px 40px"], [style*="px 40px 88px"], [style*="px 40px 56px"], [style*="px 40px 96px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+
+/* ---------- Display type ----------
+   The hero runs to 78px, which cannot fit "Mutheu" on one line at 375px. */
+@media (max-width: 640px) {
+  [style*="font-size: 78px"], [style*="font-size:78px"] { font-size: 40px !important; line-height: 1.05 !important; }
+  [style*="font-size: 52px"], [style*="font-size:52px"] { font-size: 32px !important; line-height: 1.08 !important; }
+  [style*="font-size: 48px"], [style*="font-size:48px"] { font-size: 30px !important; line-height: 1.08 !important; }
+  [style*="font-size: 44px"], [style*="font-size:44px"] { font-size: 28px !important; line-height: 1.1 !important; }
+  [style*="font-size: 40px"], [style*="font-size:40px"] { font-size: 27px !important; line-height: 1.12 !important; }
+  [style*="font-size: 30px"], [style*="font-size:30px"] { font-size: 23px !important; line-height: 1.2 !important; }
+  [style*="font-size: 24px"], [style*="font-size:24px"] { font-size: 20px !important; }
+  [style*="font-size: 22px"], [style*="font-size:22px"] { font-size: 19px !important; }
+}
+
+/* ---------- Vertical rhythm ---------- */
+@media (max-width: 640px) {
+  [style*="gap: 72px"], [style*="gap:72px"] { gap: 32px !important; }
+  [style*="gap: 64px"], [style*="gap:64px"] { gap: 28px !important; }
+  [style*="gap: 48px"], [style*="gap:48px"] { gap: 24px !important; }
+  [style*="gap: 32px"], [style*="gap:32px"] { gap: 22px !important; }
+}
+
+/* ---------- Navigation ----------
+   A nowrap flex row that ran 147px past the right edge, clipping the last
+   link. Allow it to wrap instead. */
+@media (max-width: 760px) {
+  nav {
+    flex-wrap: wrap !important;
+    gap: 10px 18px !important;
+    width: auto !important;
+    max-width: 100% !important;
+  }
+  nav a { white-space: nowrap !important; }
+  header, header > div { flex-wrap: wrap !important; height: auto !important; }
+}
+
+/* ---------- Safety net ----------
+   Deliberately no overflow-x:hidden: that hides broken layout instead of
+   fixing it, and would mask any regression here. */
+@media (max-width: 900px) {
+  img, svg, video { max-width: 100% !important; height: auto !important; }
+  [style*="white-space: nowrap"], [style*="white-space:nowrap"] { white-space: normal !important; }
+  [style*="max-width: 1240px"], [style*="max-width:1240px"] { max-width: 100% !important; }
+}
