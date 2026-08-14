@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Ann Mutheu">
+  <!-- 16/32px variant. The full favicon.svg has a serif monogram plus an accent
+       rule, which turns to mush below ~24px. This version drops the rule, uses
+       heavier squared-off letterforms, and scales them to fill the tile. -->
+  <rect width="64" height="64" rx="11" fill="#10201C"/>
+
+  <!-- Scaled about the centre so the M's right stem clears the tile edge -->
+  <g fill="#EDEFEA" transform="translate(32,32) scale(0.87) translate(-32,-31.5)">
+    <!-- A: solid wedge with a punched counter -->
+    <path d="M4 50 L15.5 13 h7.6 L34.6 50 h-8.4 l-2.1-7.6 h-9.7 L12.3 50 z
+             M17.9 35.2 h5.9 L20.85 24.1 z"/>
+    <!-- M: four heavy stems -->
+    <path d="M36 50 V13 h8.2 l7.3 21.2 L58.8 13 H60 v37 h-7.3 V29.6
+             l-5.1 14.7 h-4.6 L38 29.6 V50 z"/>
+  </g>
+</svg>

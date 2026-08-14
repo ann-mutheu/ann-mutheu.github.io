@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Ann Mutheu">
+  <!-- 16px slot only. At that size a two-letter monogram blurs into a smudge,
+       so this drops to a single initial with heavy strokes and wide counters. -->
+  <rect width="64" height="64" rx="11" fill="#10201C"/>
+  <path fill="#EDEFEA" d="M8 52 L26 11 h12 L56 52 h-11.5 l-3.1-8.2 h-13.2 L25.2 52 z
+                          M31.4 34.6 h9.2 L36 21.4 z"/>
+</svg>

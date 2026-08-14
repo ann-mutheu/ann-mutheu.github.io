@@ -48,16 +48,34 @@ def main() -> int:
     #    empty in the browser tab. So insert one rather than substitute.
     title_tag = f"<title>{TITLE}<\\u002Ftitle>"
 
+    # 2b. Icons. Absolute paths, since the site is served from the domain root.
+    #     Without these the browser falls back to auto-requesting /favicon.ico.
+    icons = "".join(
+        [
+            '<link rel=\\"icon\\" href=\\"/favicon.svg\\" type=\\"image/svg+xml\\">',
+            '<link rel=\\"icon\\" href=\\"/favicon.ico\\" sizes=\\"48x48\\">',
+            '<link rel=\\"apple-touch-icon\\" href=\\"/apple-touch-icon.png\\">',
+            # Tints the browser chrome on Android to match the site's ground.
+            '<meta name=\\"theme-color\\" content=\\"#10201C\\">',
+        ]
+    )
+
     # 3. Inject the stylesheet as the last thing in the inner <head>, so it
     #    follows the page's own <style> blocks in source order.
     block = (
-        f"{title_tag}\\n"
+        f"{title_tag}\\n{icons}\\n"
         f"<style>{MARKER}\\n{escape_for_template(css)}<\\u002Fstyle>\\n"
         f"<\\u002Fhead>"
     )
     if "<\\u002Fhead>" not in html:
         sys.exit("could not find the inner </head> — bundler format changed?")
     html = html.replace("<\\u002Fhead>", block, 1)
+
+    # 4. Mirror the icons into the outer <head>. The bundle replaces this head
+    #    at runtime, but crawlers and anything not executing JS only ever see
+    #    the outer document.
+    outer_icons = icons.replace('\\"', '"')
+    html = html.replace("</head>", f"{outer_icons}\n</head>", 1)
 
     OUT.write_text(html, encoding="utf-8")
     print(f"wrote {OUT.name}  ({OUT.stat().st_size:,} bytes)")

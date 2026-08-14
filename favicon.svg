@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Ann Mutheu">
+  <!-- Monogram in the site's palette: #10201C ground, #EDEFEA type, #1D6152 rule.
+       Letterforms are outlined paths, not text, so rendering never depends on
+       Instrument Serif being installed on the viewer's machine. -->
+  <rect width="64" height="64" rx="13" fill="#10201C"/>
+
+  <g fill="#EDEFEA">
+    <!-- A -->
+    <path d="M14.05 42.4 L20.6 21.6 h3.9 l6.55 20.8 h-3.72 l-1.62-5.42 h-6.34 l-1.6 5.42 z
+             m5.18-8.3 h4.72 l-2.35-7.92 z"/>
+    <!-- M -->
+    <path d="M33.4 42.4 V21.6 h4.28 l4.32 14.06 4.3-14.06 h4.25 V42.4 h-3.3 V27.1
+             l-4.02 12.98 h-2.6 L36.62 27.1 V42.4 z"/>
+  </g>
+
+  <!-- Accent rule, echoing the underlines used across the site -->
+  <rect x="18" y="47.4" width="28" height="2.6" rx="1.3" fill="#1D6152"/>
+</svg>
